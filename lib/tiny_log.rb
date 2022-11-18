@@ -24,7 +24,7 @@ class TinyLog
   # timestamp
   def method_missing(prefix, *msgs)
     msgs.each do |m|
-      m.lines.each do |l|
+      m.to_s.lines.each do |l|
         @io.puts "#{Time.now.utc.iso8601(6)} #{Process.pid.to_s.rjust(6)} #{prefix.to_s.upcase} #{l}"
       end
     end
