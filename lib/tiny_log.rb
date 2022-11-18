@@ -17,7 +17,7 @@ class TinyLog
   #   if unspecified, will default to $stdout
   #   if specified, attempts to open a file with the specified name to append to
   def initialize(filename=nil)
-    @io = filename ? File.open(filename, 'a') : $stdout
+    @io = filename.is_a?(String) ? File.open(filename, 'a') : $stdout
   end
 
   # the clever bit that annotates the log message with a log level and UTC
