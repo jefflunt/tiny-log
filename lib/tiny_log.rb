@@ -7,7 +7,7 @@ require 'time'
 # - the log message
 #
 # Ex:
-#   l = Log.new
+#   l = TinyLog.new
 #   l.erro('hi there')
 #   l.erro('hi there')
 #   2022-11-18T01:26:37.086295Z  92967 ERRO hi there
@@ -38,6 +38,14 @@ class TinyLog
         end
       end
     end
+  end
+
+  # flushes the underlying IO object; especially useful when buffering is
+  # enabled, or when you're exiting the application.
+  def flush
+    @io.flush
+
+    nil
   end
 
   # the clever bit that annotates the log message with a log level and UTC
